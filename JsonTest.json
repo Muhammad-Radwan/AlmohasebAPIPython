@@ -1,0 +1,44 @@
+{
+    "coord": {
+        "lon": 13.1875,
+        "lat": 32.8752
+    },
+    "weather": [
+        {
+            "id": 800,
+            "main": "Clear",
+            "description": "clear sky",
+            "icon": "01d"
+        }
+    ],
+    "base": "stations",
+    "main": {
+        "temp": 286.83,
+        "feels_like": 285.22,
+        "temp_min": 286.83,
+        "temp_max": 286.83,
+        "pressure": 1018,
+        "humidity": 37,
+        "sea_level": 1018,
+        "grnd_level": 1016
+    },
+    "visibility": 10000,
+    "wind": {
+        "speed": 9.78,
+        "deg": 246,
+        "gust": 11.25
+    },
+    "clouds": {
+        "all": 3
+    },
+    "dt": 1674210916,
+    "sys": {
+        "country": "LY",
+        "sunrise": 1674194918,
+        "sunset": 1674232036
+    },
+    "timezone": 7200,
+    "id": 2210247,
+    "name": "Tripoli",
+    "cod": 200
+}
