@@ -40,7 +40,12 @@ def GetAgentStatement():
 
 @app.route('/GetItemInventory', methods=['GET'])
 def GetItemInventory():
-    return repo.GetItemInventory()    
+    return repo.GetItemInventory()
+
+@app.route('/GetSalesProfit', methods=['GET'])
+def GetSalesProfit():
+    user = request.args.get('user_name')
+    return repo.GetSalesProfit(user)       
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8081)
