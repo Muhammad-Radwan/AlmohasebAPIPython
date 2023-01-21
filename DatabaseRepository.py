@@ -1,7 +1,9 @@
 import pyodbc
 import pandas
+import socket
 
 conn = pyodbc.connect("Driver={SQL Server};Server=GH93ST\SQLExpress; Database=AlmohasebSQL; User Id=ah; password=123456")
+cursor = conn.cursor()
 
 def GetAllUsers():
     df = pandas.read_sql("select * from the_persons where person_kind=1", conn)
@@ -126,3 +128,8 @@ def GetSalesProfit(date1, date2):
                             group by entries.Movementrestrictions_Date, users.Person_Name""", conn)
     dfjason = df.to_json(orient='records', date_format='iso', force_ascii=False)
     return dfjason
+
+def AddMovementRestriction(person_no, Purchase_invoice, Movementrestrictions_Date, User_No):
+    com_name = socket.gethostname()
+    cursor.execute(f"exec dbo.AddMoveRstr {person_no}, '{Purchase_invoice}', '{Movementrestrictions_Date}', {User_No}, '{com_name}'")
+    cursor.commit()

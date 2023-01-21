@@ -48,10 +48,16 @@ def GetSalesProfit():
     Date2 = request.args.get('d2')
     return repo.GetSalesProfit(Date1, Date2)       
 
-@app.route('/AddNewItem', methods=['POST'])
-def AddNewItem():
+@app.route('/AddMovementRestriction', methods=['POST'])
+def AddMovementRestriction():
     response = request.json
-    print(response)
+    
+    person_no = response['person_no']
+    Purchase_invoice = response['purchase_invoice']
+    Movementrestrictions_Date = response['movementrestrictions_date']
+    User_No = response['user_no']
+
+    repo.AddMovementRestriction(person_no, Purchase_invoice, Movementrestrictions_Date, User_No)
     return response
 
 if __name__ == "__main__":

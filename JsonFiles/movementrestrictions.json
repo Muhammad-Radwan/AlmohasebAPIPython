@@ -1,7 +1,7 @@
 {
-    "Person_No": 6,
-    "Purchase_invoice": 12,
-    "Movementrestrictions_Date": "2023-01-20",
-    "User_No": 2,
-    "Computer_Name": "GH93ST"
+    "person_no": 6,
+    "purchase_invoice": 12,
+    "movementrestrictions_date": "2023-01-20",
+    "user_no": 2,
+    "computer_name": "GH93ST"
 }
