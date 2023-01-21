@@ -111,9 +111,8 @@ def GetItemInventory():
     dfjason = df.to_json(orient='records', date_format='iso', force_ascii=False)
     return dfjason
 
-def GetSalesProfit(user_name):
-    df = pandas.read_sql(f"""declare @name nvarchar(max)
-                            set @name = '{user_name}'
+def GetSalesProfit(date1, date2):
+    df = pandas.read_sql(f"""
                             select entries.Movementrestrictions_Date, users.Person_Name,
                             sum((The_Details.Charge_Value / The_Items.Old_Unit) * The_Details.Item_Quntity) as SoldItems,
                             sum((The_Details.Item_Cost / The_Items.Old_Unit) * The_Details.Item_Quntity) as SoldItemsCost,
@@ -122,8 +121,8 @@ def GetSalesProfit(user_name):
                             inner join the_movementrestrictions entries on entries.MovementRestrictions_no = the_details.MovementRestrictions_No
                             inner join The_Items on The_Items.Item_No = The_Details.Item_No
                             inner join The_Persons users on users.Person_No = entries.User_No
-                            where (entries.Account_No = 1) and (@name is null or users.Person_Name = @name)
-                            and entries.Movementrestrictions_Date >= '2023-01-18' and entries.Movementrestrictions_Date <= '2023-01-20'
+                            where (entries.Account_No = 1)
+                            and entries.Movementrestrictions_Date >= '{date1}' and entries.Movementrestrictions_Date <= '{date2}'
                             group by entries.Movementrestrictions_Date, users.Person_Name""", conn)
     dfjason = df.to_json(orient='records', date_format='iso', force_ascii=False)
     return dfjason

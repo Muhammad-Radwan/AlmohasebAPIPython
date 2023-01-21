@@ -44,8 +44,15 @@ def GetItemInventory():
 
 @app.route('/GetSalesProfit', methods=['GET'])
 def GetSalesProfit():
-    user = request.args.get('user_name')
-    return repo.GetSalesProfit(user)       
+    Date1 = request.args.get('d1')
+    Date2 = request.args.get('d2')
+    return repo.GetSalesProfit(Date1, Date2)       
+
+@app.route('/AddNewItem', methods=['POST'])
+def AddNewItem():
+    response = request.json
+    print(response)
+    return response
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8081)
