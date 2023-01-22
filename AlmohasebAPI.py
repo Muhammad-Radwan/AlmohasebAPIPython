@@ -76,5 +76,17 @@ def AddDetails():
     repo.AddDetails(packaging, moverestno, item_no, charge_value, item_quantity, exp_date, computer_name, comment)
     return response
 
+@app.route('/AddAgent', methods=['POST'])
+def AddAgent():
+    response = request.json
+    
+    person_name = response['person_name']
+    person_add = response['person_add']
+    person_tel = response['person_tel']
+    person_kind = response['person_kind']
+
+    repo.AddAgent(person_name, person_add, person_tel, person_kind)
+    return response
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8081)

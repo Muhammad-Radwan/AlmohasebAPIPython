@@ -137,3 +137,8 @@ def AddMovementRestriction(person_no, Purchase_invoice, Movementrestrictions_Dat
 def AddDetails(packaging, moverestno,item_no, charge_value, item_quantity, exp_date, computer_name, comment):
     cursor.execute(f"exec dbo.AddDetails {packaging}, {moverestno}, {item_no}, {charge_value}, {item_quantity}, '{exp_date}', '{computer_name}', '{comment}'")
     cursor.commit()
+
+def AddAgent(person_name, person_add, person_tel, person_kind):
+    cursor.execute(f"""Insert Into The_Persons(person_name, person_add, person_tel, person_kind)
+                    Values('{person_name}', '{person_add}', '{person_tel}', {person_kind})""")
+    cursor.commit()
