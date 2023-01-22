@@ -60,5 +60,21 @@ def AddMovementRestriction():
     repo.AddMovementRestriction(person_no, Purchase_invoice, Movementrestrictions_Date, User_No)
     return response
 
+@app.route('/AddDetails', methods=['POST'])
+def AddDetails():
+    response = request.json
+    
+    packaging = response['packaging']
+    moverestno = response['moverestno']
+    item_no = response['item_no']
+    charge_value = response['charge_value']
+    item_quantity = response['item_quantity']
+    exp_date = response['exp_date']
+    computer_name = response['computer_name']
+    comment = response['comment']
+
+    repo.AddDetails(packaging, moverestno, item_no, charge_value, item_quantity, exp_date, computer_name, comment)
+    return response
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8081)

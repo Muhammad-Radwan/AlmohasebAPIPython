@@ -133,3 +133,7 @@ def AddMovementRestriction(person_no, Purchase_invoice, Movementrestrictions_Dat
     com_name = socket.gethostname()
     cursor.execute(f"exec dbo.AddMoveRstr {person_no}, '{Purchase_invoice}', '{Movementrestrictions_Date}', {User_No}, '{com_name}'")
     cursor.commit()
+
+def AddDetails(packaging, moverestno,item_no, charge_value, item_quantity, exp_date, computer_name, comment):
+    cursor.execute(f"exec dbo.AddDetails {packaging}, {moverestno}, {item_no}, {charge_value}, {item_quantity}, '{exp_date}', '{computer_name}', '{comment}'")
+    cursor.commit()
