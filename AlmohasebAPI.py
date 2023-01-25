@@ -1,11 +1,12 @@
 from flask import Flask, request
+from waitress import serve
 import DatabaseRepository as repo
 
 app = Flask(__name__)
 
 @app.route('/')
 def Index():
-    return 'Almohaseb3 V1 API By Mohammed Radwan: 0910184901'
+    return 'Almohaseb3 V1 API By Mohammed Radwan, The Server Is Currently Up & Running'
 
 @app.route('/GetAllUsers', methods=['GET'])
 def GetAllUsers():
@@ -90,3 +91,4 @@ def AddAgent():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8081)
+    #serve(app, host='0.0.0.0', port=8081)
